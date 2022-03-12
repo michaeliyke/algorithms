@@ -69,12 +69,11 @@ class Balancer:
     return self.valid
   
   def feed(self, symbols) -> bool:
-    if len(symbols) % 2 == 1: 
-      self.valid = False
-      return self.valid
-      
     opened = Stack()
     self.valid = False
+
+    if len(symbols) % 2 == 1: return self.valid
+
     for s in symbols:
       symbol = Symbol(s)
       if not symbol.isACloser():
