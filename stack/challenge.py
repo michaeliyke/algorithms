@@ -22,6 +22,6 @@ from stack import Balancer
 
 def isBalanced(symbols):
   balancer = Balancer()
-  balancer.fill(symbols)
+  balancer.feed(symbols)
   # print(balancer)
   return balancer.isBalanced()

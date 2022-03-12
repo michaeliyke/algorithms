@@ -1,34 +1,22 @@
 
-from typing_extensions import Self
-
-
 class Symbol:
   def __init__(self, symbol: str) -> None:
     self.symbol = symbol
-    self.closer: str
-    self.openner: str
+    self.closer = ""
     if symbol == "{":
       self.closer = "}"
-
-    if symbol == "}":
-      self.openner = "{"
 
     if symbol == "[":
       self.closer = "]"
 
-    if symbol == "]":
-      self.openner = "["
-
     if symbol == "(":
       self.closer = ")"
 
-    if symbol == ")":
-      self.openner = "("
-
-    self.closed = False
-
   def __str__(self) -> str:
       return self.symbol
+  
+  def isACloser(self) -> bool:
+    return len(self.closer) == 0
 
 
 class Stack:
@@ -72,56 +60,28 @@ class Stack:
     return str([str(x) for x in self.list])
 
 
-class StackWrapper:
-
-  def checkSymbol(self, wrapper: Self, closing: str) -> None:
-    while not wrapper.stack.is_empty:
-      symbol: Symbol = wrapper.stack.pop()
-      if symbol.closer == closing:
-        symbol.closed = True
-        break
-
-  def __str__(self) -> str:
-      return str(self.stack)
-  
-  def __init__(self):
-    self.stack = Stack()
-    self.valid = True
-
-  def push(self, item: Symbol, wrapper: Self):
-    if not self.valid:
-      return
-
-    if item.symbol == "}" or item.symbol == "]" or item.symbol == ")":
-      print("This is a closer", item.openner, item.symbol)
-      self.valid = self.checkSymbol(wrapper)
-      pass
-    return self.stack.push(item)
-
-
 class Balancer:
   def __str__(self) -> str:
-      return str(self.stack)
-      
-  def __init__(self):
-      self.wrapper = StackWrapper()
-      self.stack = self.wrapper.stack
-  
+      return str(self.opened)
+
   def isBalanced(self) -> bool:
-    wrapper = StackWrapper()
-    while not self.stack.is_empty() and self.wrapper.valid:
-      wrapper.push(self.stack.pop(), wrapper)
-    print(self.stack, ":", wrapper)
-    return False
+    return self.valid
   
-  def feed(self):
-    return self.wrapper.valid # For isBalanced
-  
-  def fill(self, symbols):
-    it = 0
-    self.symbols = symbols
-    while it < len(symbols):
-      s = symbols[it]
-      it += 1
-      if self.stack.push(Symbol(s)):
+  def feed(self, symbols) -> bool:
+    opened = Stack()
+    self.valid = False
+    for s in symbols:
+      symbol = Symbol(s)
+      if not symbol.isACloser():
+        opened.push(symbol)
+        continue
+
+      openner: Symbol = opened.pop()
+      if symbol.symbol != openner.closer:
+        self.valid = False
         break
+
+      self.valid = True
+
+    return self.valid
+      
