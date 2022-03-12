@@ -1,4 +1,5 @@
 
+
 class Symbol:
   def __init__(self, symbol: str) -> None:
     self.symbol = symbol
@@ -57,7 +58,7 @@ class Stack:
     return len(self.list)
   
   def __str__(self) -> str:
-    return str([str(x) for x in self.list])
+    return "".join([str(x) for x in self.list])
 
 
 class Balancer:
@@ -68,6 +69,10 @@ class Balancer:
     return self.valid
   
   def feed(self, symbols) -> bool:
+    if len(symbols) % 2 == 1: 
+      self.valid = False
+      return self.valid
+      
     opened = Stack()
     self.valid = False
     for s in symbols:

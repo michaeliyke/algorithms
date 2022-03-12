@@ -1,17 +1,26 @@
 # Balanced symbols
-b = "(((())))"
-b = "([]{}())"
-b = "([{}])"
-b = "([{}])(()()())[({()})]"
+b1 = "(((())))"
+b2 = "([]{}())"
+b3 = "([{}])"
+b4 = "([{}])(()()())[({()})]"
 
 # Unbalanced symbols
-u = "[}([){]"
-u = "()((((([{]))))(){[()]}"
-u = "()((((([]))))(){[()]}"
+u1 = "()((((([{]))))(){[()]}"
+u2 = "()((((([]))))(){[()]}"
+u3 = "[}([){]"
 
 from challenge import isBalanced
+print("\n# Balanced symbols")
+print(isBalanced(b1))
+print(isBalanced(b2))
+print(isBalanced(b3))
+print(isBalanced(b4))
+print("\n")
 
-print(isBalanced(u))
+print("\n# Unbalanced symbols")
+print(isBalanced(u1))
+print(isBalanced(u2))
+print(isBalanced(u3))
 
 """
 st is a stack of items (each item is an object with necessary informtion)
