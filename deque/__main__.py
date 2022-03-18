@@ -16,6 +16,7 @@ palindromes = [
   "radar",
   "rotor",
   "noon",
+  "racecar",
   "Nurses run.",
   "Madam, I'm Adam.",
   "Eva, can I stab bats in a cave?",
