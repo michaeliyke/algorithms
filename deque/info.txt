@@ -1,0 +1,20 @@
+Deque - 
+An ADT (Abstract Data Type) that resembles both a stack and a queue
+
+Deque can hold a collection of items and the order is sort of preserved in a deque. You can add items both 
+to the front and to the back an you can remove items from the front and back as well. 
+
+Using the deque data structure, write a fuction that takes in an input string and returns true if:
+	the string is a palindrome - a word that is the same when spelt backward and forward
+mom
+level
+kayak
+ 
+
+ """
+Loop thro and add ch to rear of deck for constant time
+As long as d's size >= 2, remove front-most and rear-most item into their vars
+If those variables aren't equivalent, return early
+If the variables are the same, proceed to the next items
+If the size of the deck eventually gets to be smaller than 2, return true
+"""
