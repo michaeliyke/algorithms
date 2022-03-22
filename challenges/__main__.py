@@ -1,12 +1,6 @@
-import factors
+import sorting
 
-num = 60
-num = 104
-num=13
-num = 630
+s = "string of words"
+s = "apple banana ORANGE"
 
-
-print(factors.primesOf(num))
-
-
-print(factors.of(num))
+print(sorting.sortStr(s))
