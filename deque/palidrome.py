@@ -13,7 +13,7 @@ def shifts(s, ch=None):
   n = max - len(s)
   return ch * n
 
-def is_palidrom(s: str):
+def is_palindrom(s: str):
   s = re.sub(r"[^a-zA-Z]", "", s).lower()
   d = Deque()
   for ch in s:
@@ -24,7 +24,12 @@ def is_palidrom(s: str):
       return False
 
   return True
-  
+
+
+def is_palindrom2(s: str):
+  forwards = "".join(re.findall(r"[a-z]", s.lower()))
+  return forwards == forwards[::-1]
+
 def show_palindrome(array):
   os.system("cls")
   if type(array) is not list:
@@ -33,7 +38,7 @@ def show_palindrome(array):
   palindromes = array
   print("\n\n  ", shifts("-"*24, " ") + "is_palindrome( )".upper(), "\n")
   for p in palindromes:
-    print("  '"+p +"'", shifts(p, ":"), is_palidrom(p))
+    print("  '"+p +"'", shifts(p, ":"), is_palindrom(p))
 
 
 palindromes = []
