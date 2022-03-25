@@ -1,5 +1,4 @@
-import indexing
-
+import indexing, solution
 # An array of tupples - (InputArray, ExpectedOuput)
 items = [
   (
@@ -30,7 +29,8 @@ items = [
 
 for item in items:
   inputArray, expectedOutput = item
-  output = indexing.index(inputArray, 2)
+  # output = indexing.index(inputArray, 2)
+  output = solution.index(inputArray, 2)
   print("\n  Input: ", inputArray)
   print("  Outputed: ", output)
   print("  Expected: ", expectedOutput)
