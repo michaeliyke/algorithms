@@ -1,3 +1,11 @@
+import math
+
+def isPrime(n):
+  if n < 2: return False
+  for i in range(2, int(math.sqrt(n))+1):
+    if n % i == 0: return False
+  return True
+
 def pf(number):
   divisor = 2; 
   while(number > 1):
@@ -27,3 +35,11 @@ def primesOf(number):
 
 def of(number):
   return list(f(number))
+
+# 1 is not a prime number
+# sqrt(49) - 7: if i <= 7 cannot divide 49, no other number can
+def isPrimeTrialDiv(n: int) -> bool:
+  if n < 2: return False
+  for i in range(2, int(math.sqrt(n)) + 1):
+    if n % i == 0: return False
+  return True
